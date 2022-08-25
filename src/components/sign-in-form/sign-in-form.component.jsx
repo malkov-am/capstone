@@ -1,10 +1,11 @@
 import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   createUserDocumentFromAuth,
   signInAuthWithEmailAndPassword,
   signInWithGooglePopup,
 } from "../../utils/firebase/firebase.utils";
-import Button from "../button/button.component";
+import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import FormInput from "../form-input/form-input.conponent";
 import "./sign-in-form.styles.scss";
 
@@ -14,6 +15,7 @@ const defaultFormFields = {
 };
 
 const SignInForm = () => {
+  const navigate = useNavigate();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
@@ -24,6 +26,7 @@ const SignInForm = () => {
   const signInWithGoogle = async () => {
     const { user } = await signInWithGooglePopup();
     await createUserDocumentFromAuth(user);
+    navigate('/');
   };
 
   const handleSubmit = async (evt) => {
@@ -87,7 +90,7 @@ const SignInForm = () => {
             type='button'
             children='Google Sign In'
             onClick={signInWithGoogle}
-            buttonType='google'
+            buttonType={BUTTON_TYPE_CLASSES.google}
           />
         </div>
       </form>

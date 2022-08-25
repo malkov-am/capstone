@@ -11,6 +11,7 @@ const Checkout = () => {
     cartItems,
     addItemToCard,
     removeItemFromCart,
+    cartTotal,
   } = useContext(CartContext);
   useEffect(() => {
     setIsCartOpen(false);
@@ -38,7 +39,7 @@ const Checkout = () => {
       {cartItems.map((item) => (
         <CheckoutItem key={item.id} cartItem={item} />
       ))}
-      <span className='total'>Total: 0</span>
+      <span className='total'>Total: ${cartTotal}</span>
     </div>
   );
 };
