@@ -5,17 +5,13 @@ import "./checkout.styles.scss";
 
 const Checkout = () => {
   const {
-    isCartOpen,
-    setIsCartOpen,
-    cartCount,
+    // setIsCartOpen,
     cartItems,
-    addItemToCard,
-    removeItemFromCart,
     cartTotal,
   } = useContext(CartContext);
-  useEffect(() => {
-    setIsCartOpen(false);
-  }, []);
+  // useEffect(() => {
+  //   setIsCartOpen(false);
+  // }, []);
   return (
     <div className='checkout-container'>
       <div className='checkout-header'>
